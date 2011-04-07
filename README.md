@@ -16,7 +16,7 @@ Depending on the informaiton you want to get back, you will either receive JSON 
     require "ogle"
 
     CONNECTION = Ogle::Client.new(
-    :host => "123.456.789.101"
+      :host => "example.com"
     )
 
     response = CONNECTION.resource.all
