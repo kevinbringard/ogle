@@ -1,10 +1,9 @@
 require "hugs"
+require "ogle/resource"
 
 module Ogle
   class Client
     ##
-    #
-    #
     #
     
     def initialize options

@@ -1,3 +1,1 @@
-module Ogle
-  # Your code goes here...
-end
+require "ogle/client"
