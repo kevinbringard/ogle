@@ -25,6 +25,8 @@ module Ogle
 
     def find image_id
       @connection.head "/images/#{image_id}"
+
+      ### TODO: Return a new Hash with all the X-Image-Meta-*
     end
   end
 end
