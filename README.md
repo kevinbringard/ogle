@@ -11,7 +11,8 @@ Depending on the informaiton you want to get back, you will either receive JSON 
 ## Usage
 
 ### Bundler
-  gem "ogle"
+
+    gem "ogle"
 
 ### Examples
 
