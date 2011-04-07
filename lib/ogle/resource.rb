@@ -5,21 +5,23 @@ module Ogle
     end
 
     ##
-    # Get a listing of all the images Glance knows about
+    # Returns information about images.
+    #
+    # +verbose+: A Boolean toggling the returning of
+    # additional image information.
 
-    def all
-      @connection.get "/images"
+    def all verbose = false
+      path = verbose ? "/images" : "/images/detail"
+
+      response = @connection.get path
+      
+      response.body['images']
     end
 
     ##
-    # Get a detailed listing on all public VM images
-
-    def details
-      @connection.get "/images/detail"
-    end
-
-    ##
-    # Get detailed meta-data on a specific image
+    # Returns information about the given 'image_id'.
+    #
+    # +image_id+: A String representing an image_id.
 
     def find image_id
       @connection.head "/images/#{image_id}"
