@@ -19,13 +19,11 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_dependency "hugs", "~> 2.5.1"
-  s.add_dependency "multipart-post", "~> 1.0.1"
-  s.add_dependency "nokogiri", "~> 1.4.4"
+  s.add_dependency "hugs", "~> 2.5.2"
   s.add_dependency "minitest"
 
   s.add_development_dependency "rake"
-  s.add_development_dependency "vcr"
-  s.add_development_dependency "webmock"
+  #s.add_development_dependency "vcr"
+  #s.add_development_dependency "webmock"
   s.add_development_dependency "minitest"
 end
