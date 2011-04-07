@@ -5,7 +5,7 @@ module Ogle
     ##
     # Required:
     # +host+: A string containing the hostname or IP of your glance server
-    
+
     def initialize options
       @connection = Hugs::Client.new(
         :host     => options[:host],
@@ -14,6 +14,10 @@ module Ogle
       )
       @connection.raise_4xx = true
       @connection.raise_5xx = true
+    end
+
+    def resource
+      @resource ||= Resource.new @connection
     end
   end
 end
