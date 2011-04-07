@@ -19,9 +19,9 @@ describe Ogle::Resource do
     puts response.code
   end
 
-  #describe "#find" do
-  #  response = CONNECTION.resource.find id
-  #  puts response
-  #  puts response.code
-  #end
+  describe "#find" do
+    response = CONNECTION.resource.find 6
+    puts response
+    puts response.code
+  end
 end
