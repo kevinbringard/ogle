@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email       = ["kbringard@attinteractive.com"]
   s.homepage    = ""
   s.summary     = %q{Ruby interface for OpenStack Glance}
-  s.description = %q{Exposes the API for OpenStack Glance. Ogle, it's so much more than a glance.}
+  s.description = %q{Exposes the API for OpenStack Glance. Go ahead and ogle, it's so much more than a glance.}
 
   s.rubyforge_project = "ogle"
 
