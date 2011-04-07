@@ -13,21 +13,21 @@ Depending on the informaiton you want to get back, you will either receive JSON 
 
 ### Examples
 
-require "ogle"
+  require "ogle"
 
-CONNECTION = Ogle::Client.new(
+  CONNECTION = Ogle::Client.new(
   :host => "123.456.789.101"
   )
 
-response = CONNECTION.resource.all
-puts response
-puts response.body
-puts response.code
+  response = CONNECTION.resource.all
+  puts response
+  puts response.body
+  puts response.code
 
-response = CONNECTION.resource.details
-puts response
-puts response.body
-puts response.code
+  response = CONNECTION.resource.details
+  puts response
+  puts response.body
+  puts response.code
 
 ## Compatability
 
