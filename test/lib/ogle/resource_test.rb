@@ -4,7 +4,6 @@ CONNECTION = Ogle::Client.new(
   :host => "10.1.170.33"
 )
 
-
 describe Ogle::Resource do
   describe "#all" do
     response = CONNECTION.resource.all
