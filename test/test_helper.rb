@@ -1,8 +1,8 @@
+require "bundler"
 Bundler.setup :default, :test
 
-require "ogle"
-require "minitest/spec"
-require "minitest/autorun"
+
+%w(minitest/spec minitest/autorun ogle).each { |r| require r }
 
 class MiniTest::Unit::TestCase
   CONNECTION = Ogle::Client.new(

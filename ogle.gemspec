@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency "hugs", "~> 2.3.0"
   s.add_dependency "multipart-post", "~> 1.0.1"
   s.add_dependency "nokogiri", "~> 1.4.4"
+  s.add_dependency "minitest"
 
   s.add_development_dependency "rake"
   s.add_development_dependency "vcr"
