@@ -14,10 +14,10 @@ describe Ogle::Resource do
   end
 
   describe "#find" do
-    response = CONNECTION.resource.find 6
-  #  puts CONNECTION.inspect
-  #  puts response.inspect
-  #  puts response.body
-  #  #puts response.code
+    it "returns X-Image-Meta-* headers as a hash" do
+      response = CONNECTION.resource.find 6
+
+      response.size.must_equal 20
+    end
   end
 end
