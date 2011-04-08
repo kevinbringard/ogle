@@ -34,7 +34,7 @@ Depending on the call you make, glance will sometimes return JSON and others XML
     puts response.body
     puts response.code
 
-    # This will return the x-image-meta-* headers for a specific imahge
+    # This will return the x-image-meta-* headers for a specific image as a hash
     response = CONNECTION.resource 6
     puts response.inspect
 
