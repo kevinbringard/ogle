@@ -1,0 +1,72 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :head
+    uri: http://10.1.170.33:9292/images/6
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "0"
+      x-image-meta-property-distro: 
+      - Ubuntu
+      x-image-meta-id: 
+      - "6"
+      x-image-meta-property-arch: 
+      - amd64
+      x-image-meta-deleted: 
+      - "False"
+      x-image-meta-container-format: 
+      - ami
+      x-image-meta-property-uploader: 
+      - root@e3ab3
+      x-image-meta-location: 
+      - file:///var/lib/glance/images/6
+      x-image-meta-deleted-at: 
+      - ""
+      x-image-meta-created-at: 
+      - 2011-04-06T20:04:48.664176
+      x-image-meta-size: 
+      - "1476395008"
+      x-image-meta-status: 
+      - active
+      x-image-meta-property-type: 
+      - machine
+      x-image-meta-property-kernel-name: 
+      - maverick-server-uec-amd64-vmlinuz-virtual
+      x-image-meta-is-public: 
+      - "True"
+      x-image-meta-property-kernel-id: 
+      - "5"
+      x-image-meta-updated-at: 
+      - 2011-04-06T20:04:57.042658
+      x-image-meta-checksum: 
+      - d511da81009517c53f36ff4e8602ff62
+      x-image-meta-property-version: 
+      - "10.10"
+      x-image-meta-disk-format: 
+      - ami
+      x-image-meta-name: 
+      - maverick-server-uec-amd64.img
+      location: 
+      - http://10.1.170.33:9292/images/6
+      etag: 
+      - d511da81009517c53f36ff4e8602ff62
+      date: 
+      - Fri, 08 Apr 2011 17:56:53 GMT
+      connection: 
+      - keep-alive
+    body: 
+    http_version: "1.1"

@@ -36,5 +36,15 @@ module Ogle
 
       meta
     end
+
+    ##
+    # Stores the disk provided disk image in glance
+    # Stores provided meta-data about the image in glance
+    #
+    # +image_location+: A string representing the location of the image to updload
+    
+    def add image_location
+    end
+  
   end
 end
