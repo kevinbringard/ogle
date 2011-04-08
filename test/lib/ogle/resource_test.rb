@@ -13,6 +13,15 @@ describe Ogle::Resource do
     end
   end
 
+  describe "#all verbose" do
+    it "returns a detailed hash of all  images" do
+      response = CONNECTION.resource.all true
+
+      response.size.must_equal 6
+    
+    end
+  end
+
   describe "#find" do
     it "returns X-Image-Meta-* headers as a hash" do
       response = CONNECTION.resource.find 6

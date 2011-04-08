@@ -11,7 +11,7 @@ module Ogle
     # additional image information.
 
     def all verbose = false
-      path = verbose ? "/images" : "/images/detail"
+      path = verbose ? "/images/detail" : "/images"
 
       response = @connection.get path
       
