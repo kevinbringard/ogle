@@ -13,8 +13,8 @@ describe Ogle::Resource do
     end
   end
 
-  describe "#all verbose" do
-    it "returns a detailed hash of all  images" do
+  describe "#all true" do
+    it "returns a detailed hash of images (verbose = true)" do
       response = CONNECTION.resource.all true
 
       response.size.must_equal 6
