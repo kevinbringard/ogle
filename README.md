@@ -2,11 +2,11 @@
 
 > Go ahead and ogle, it's so much more than a glance.
 
-Lean Ruby bindings to OpenStack's [Glance](http://glance.openstack.org/). Exposes the Glance API endpoints in an easy to access manner. Go ahead and ogle, it's so much more than a glance.
+Lean Ruby bindings to OpenStack's [Glance](http://glance.openstack.org/). Exposes the Glance API endpoints in an easy to access manner.
 
 # Why
 
-Depending on the informaiton you want to get back, you will either receive JSON or XML. This will normalize the returned data for easy use. Plus, I was bored.
+Depending on the call you make, glance will sometimes return JSON and others XML. This will normalize the returned data for easy use. Plus, I was bored.
 
 ## Usage
 
