@@ -14,7 +14,7 @@ module Ogle
       path = verbose ? "/images/detail" : "/images"
 
       response = @connection.get path
-      
+
       response.body['images']
     end
 
