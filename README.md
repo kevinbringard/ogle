@@ -22,15 +22,21 @@ Depending on the informaiton you want to get back, you will either receive JSON 
       :host => "example.com"
     )
 
+    # This will give a list of all the images
     response = CONNECTION.resource.all
     puts response
     puts response.body
     puts response.code
 
-    response = CONNECTION.resource.details
+    # This will give a detailed list of all the images
+    response = CONNECTION.resource true
     puts response
     puts response.body
     puts response.code
+
+    # This will return the x-image-meta-* headers for a specific imahge
+    response = CONNECTION.resource 6
+    puts response.inspect
 
 ## Compatability
 
@@ -38,5 +44,4 @@ ruby 1.9.2
 
 ## Testing
 
-Tests currently only run online, but eventually I'll add [VCR](https://github.com/myronmarston/vcr) bindings to make them run offline
     $ bundle exec rake
