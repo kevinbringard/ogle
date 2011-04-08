@@ -24,9 +24,17 @@ module Ogle
     # +image_id+: A String representing an image_id.
 
     def find image_id
-      @connection.head "/images/#{image_id}"
+      headers = @connection.head "/images/#{image_id}"
 
-      ### TODO: Return a new Hash with all the X-Image-Meta-*
+      meta ={}
+
+      headers.each_header do |k, v|
+        if k.match('x-image-meta-')
+          meta["#{k}"] = v
+        end
+      end
+
+      meta
     end
   end
 end

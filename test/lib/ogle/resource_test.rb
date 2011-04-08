@@ -13,16 +13,11 @@ describe Ogle::Resource do
     end
   end
 
-  #describe "#details" do
-  #  response = CONNECTION.resource.details
-  #  puts response
+  describe "#find" do
+    response = CONNECTION.resource.find 6
+  #  puts CONNECTION.inspect
+  #  puts response.inspect
   #  puts response.body
-  #  puts response.code
-  #end
-
-  #describe "#find" do
-  #  response = CONNECTION.resource.find 6
-  #  puts response
-  #  puts response.code
-  #end
+  #  #puts response.code
+  end
 end
