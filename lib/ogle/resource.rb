@@ -25,12 +25,12 @@ module Ogle
 
     def find image_id
       headers = @connection.head "/images/#{image_id}"
-
-      meta ={}
+      meta    = {}
 
       headers.each_header do |k, v|
-        if k.match('x-image-meta-')
-          meta["#{k}"] = v
+        if k.downcase.match %r{^x-image-meta-([a-z-]+)$}
+          key = $1.tr '-', '_'
+          meta["#{key}"] = v
         end
       end
 
@@ -42,9 +42,9 @@ module Ogle
     # Stores provided meta-data about the image in glance
     #
     # +image_location+: A string representing the location of the image to updload
-    
+
     def add image_location
     end
-  
+
   end
 end
