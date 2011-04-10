@@ -22,7 +22,8 @@ describe Ogle::Resource do
     end
 
     it "returns metadata" do
-      assert_valid_keys @response.first, %w(name
+      assert_valid_keys @response.first, %w(
+        name
         container_format
         disk_format
         checksum
