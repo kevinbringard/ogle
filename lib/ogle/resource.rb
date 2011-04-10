@@ -25,16 +25,14 @@ module Ogle
 
     def find image_id
       headers = @connection.head "/images/#{image_id}"
-      meta    = {}
-
-      headers.each_header do |k, v|
-        if k.downcase.match %r{^x-image-meta-([a-z-]+)$}
-          key = $1.tr '-', '_'
-          meta["#{key}"] = v
+      Hash.new.tap do |h|
+        headers.each_header do |k, v|
+          if k.downcase.match %r{^x-image-meta-([a-z-]+)$}
+            key = $1.tr '-', '_'
+            h[key] = v
+          end
         end
       end
-
-      meta
     end
 
     ##
