@@ -5,7 +5,7 @@ CONNECTION = Ogle::Client.new(
 )
 
 def must_have_valid_keys response, keys
-  response.must_be_kind_of Hash
+  raise "The response passed in is empty." if response.keys.empty?
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
 
