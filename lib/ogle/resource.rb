@@ -24,10 +24,11 @@ module Ogle
     # +image_id+: A String representing an image_id.
 
     def find image_id
-      headers = @connection.head "/images/#{image_id}"
+      response = @connection.head "/images/#{image_id}"
+
       Hash.new.tap do |h|
         properties = h['properties'] = Hash.new
-        headers.each_header do |k, v|
+        response.each_header do |k, v|
           case k.downcase.tr '-', '_'
             when %r{^x_image_meta_property_([a-z_]+)$}
               properties[$1] = v
