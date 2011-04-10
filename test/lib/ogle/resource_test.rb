@@ -4,7 +4,7 @@ CONNECTION = Ogle::Client.new(
   :host => "10.1.170.33"
 )
 
-def must_be_valid_keys response, keys
+def must_have_valid_keys response, keys
   response.must_be_kind_of Hash
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
@@ -22,7 +22,7 @@ describe Ogle::Resource do
     end
 
     it "returns metadata" do
-      must_be_valid_keys @response.first, %w(
+      must_have_valid_keys @response.first, %w(
         name
         container_format
         disk_format
@@ -45,7 +45,7 @@ describe Ogle::Resource do
     end
 
     it "returns metadata" do
-      must_be_valid_keys @response.first, %w(
+      must_have_valid_keys @response.first, %w(
         status
         name
         deleted
@@ -74,7 +74,7 @@ describe Ogle::Resource do
     ### TODO: May want to refactor these keys into a variable,
     ### TODO: since Resource#find verbose shares them.
     it "returns X-Image-Meta-* headers as a hash" do
-      must_be_valid_keys @response, %w(
+      must_have_valid_keys @response, %w(
         status
         name
         deleted
@@ -93,7 +93,7 @@ describe Ogle::Resource do
     end
 
     it "returns a nested properties hash" do
-      must_be_valid_keys @response['properties'], %w(
+      must_have_valid_keys @response['properties'], %w(
         distro
         arch
         uploader
