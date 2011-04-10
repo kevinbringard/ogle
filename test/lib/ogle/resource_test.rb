@@ -5,6 +5,7 @@ CONNECTION = Ogle::Client.new(
 )
 
 def assert_valid_keys response, keys
+  response.must_be_kind_of Hash
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
 
@@ -63,33 +64,43 @@ describe Ogle::Resource do
   end
 
   describe "#find" do
-    it "returns X-Image-Meta-* headers as a hash" do
+    before do
       VCR.use_cassette "resource_find" do
-        response = CONNECTION.resource.find 6
-
-        assert_valid_keys response, %w(
-          property_distro
-          id
-          property_arch
-          deleted
-          container_format
-          property_uploader
-          location
-          deleted_at
-          created_at
-          size
-          status
-          property_type
-          property_kernel_name
-          is_public
-          property_kernel_id
-          updated_at
-          checksum
-          property_version
-          disk_format
-          name
-        )
+        @response = CONNECTION.resource.find 6
       end
+    end
+
+    ### TODO: May want to refactor these keys into a variable,
+    ### TODO: since Resource#find verbose shares them.
+    it "returns X-Image-Meta-* headers as a hash" do
+      assert_valid_keys @response, %w(
+        status
+        name
+        deleted
+        container_format
+        created_at
+        disk_format
+        updated_at
+        id
+        location
+        checksum
+        is_public
+        deleted_at
+        properties
+        size
+      )
+    end
+
+    it "returns a nested properties hash" do
+      assert_valid_keys @response['properties'], %w(
+        distro
+        arch
+        uploader
+        type
+        kernel_name
+        kernel_id
+        version
+      )
     end
   end
 end

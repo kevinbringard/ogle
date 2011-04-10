@@ -26,10 +26,13 @@ module Ogle
     def find image_id
       headers = @connection.head "/images/#{image_id}"
       Hash.new.tap do |h|
+        properties = h['properties'] = Hash.new
         headers.each_header do |k, v|
-          if k.downcase.match %r{^x-image-meta-([a-z-]+)$}
-            key = $1.tr '-', '_'
-            h[key] = v
+          case k.downcase.tr '-', '_'
+            when %r{^x_image_meta_property_([a-z_]+)$}
+              properties[$1] = v
+            when %r{^x_image_meta_([a-z_]+)$}
+              h[$1] = v
           end
         end
       end
