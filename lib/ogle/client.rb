@@ -1,4 +1,4 @@
-%w(hugs ogle/resource).each { |r| require r }
+%w(hugs ogle/images).each { |r| require r }
 
 module Ogle
   class Client
@@ -16,8 +16,8 @@ module Ogle
       @connection.raise_5xx = true
     end
 
-    def resource
-      @resource ||= Resource.new @connection
+    def images
+      @images ||= Images.new @connection
     end
   end
 end

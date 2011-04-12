@@ -1,5 +1,5 @@
 module Ogle
-  class Resource
+  class Images
     def initialize connection
       @connection = connection
     end
