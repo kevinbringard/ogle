@@ -9,7 +9,7 @@ def must_have_valid_keys response, keys
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
 
-describe Ogle::Images do
+describe Ogle::Image do
   describe "#all" do
     before do
       VCR.use_cassette "images_all" do

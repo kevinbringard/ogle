@@ -16,8 +16,8 @@ module Ogle
       @connection.raise_5xx = true
     end
 
-    def images
-      @images ||= Image.new @connection
+    def image
+      @image ||= Image.new @connection
     end
   end
 end
