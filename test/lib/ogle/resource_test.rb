@@ -12,7 +12,7 @@ end
 describe Ogle::Images do
   describe "#all" do
     before do
-      VCR.use_cassette "resource_all" do
+      VCR.use_cassette "images_all" do
         @response = CONNECTION.images.all
       end
     end
@@ -35,7 +35,7 @@ describe Ogle::Images do
 
   describe "#all true" do
     before do
-      VCR.use_cassette "resource_all_verbose" do
+      VCR.use_cassette "images_all_verbose" do
         @response = CONNECTION.images.all true
       end
     end
@@ -66,7 +66,7 @@ describe Ogle::Images do
 
   describe "#find" do
     before do
-      VCR.use_cassette "resource_find" do
+      VCR.use_cassette "images_find" do
         @response = CONNECTION.images.find 6
       end
     end
