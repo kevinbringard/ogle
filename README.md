@@ -23,15 +23,15 @@ Depending on the call you make, glance will sometimes return JSON and others XML
     )
 
     # This will give a list of all the images
-    response = CONNECTION.resource.all
+    response = CONNECTION.images.all
     puts response
 
     # This will give a detailed list of all the images
-    response = CONNECTION.resource true
+    response = CONNECTION.images true
     puts response
 
     # This will return headers for a specific image as a hash
-    response = CONNECTION.resource.find 6
+    response = CONNECTION.images.find 6
     puts response
 
 ## Compatability
