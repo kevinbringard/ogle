@@ -9,11 +9,11 @@ def must_have_valid_keys response, keys
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
 
-describe Ogle::Resource do
+describe Ogle::Images do
   describe "#all" do
     before do
       VCR.use_cassette "resource_all" do
-        @response = CONNECTION.resource.all
+        @response = CONNECTION.images.all
       end
     end
 
@@ -36,7 +36,7 @@ describe Ogle::Resource do
   describe "#all true" do
     before do
       VCR.use_cassette "resource_all_verbose" do
-        @response = CONNECTION.resource.all true
+        @response = CONNECTION.images.all true
       end
     end
 
@@ -67,12 +67,12 @@ describe Ogle::Resource do
   describe "#find" do
     before do
       VCR.use_cassette "resource_find" do
-        @response = CONNECTION.resource.find 6
+        @response = CONNECTION.images.find 6
       end
     end
 
     ### TODO: May want to refactor these keys into a variable,
-    ### TODO: since Resource#find verbose shares them.
+    ### TODO: since Images#find verbose shares them.
     it "returns X-Image-Meta-* headers as a hash" do
       must_have_valid_keys @response, %w(
         status
