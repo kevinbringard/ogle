@@ -67,7 +67,7 @@ describe Ogle::Image do
   describe "#all runable" do
     before do
       VCR.use_cassete "images_all_runable" do
-        @response = CONNECTION.image.all.runable
+        @response = CONNECTION.image.runable
       end
     end
 
