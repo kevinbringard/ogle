@@ -8,7 +8,7 @@ end
 VCR.config do |c|
   c.stub_with :webmock
   c.cassette_library_dir     = "test/cassettes"
-  c.default_cassette_options = { :record => :none }
+  c.default_cassette_options = { :record => :new_episodes }
 end
 
 MiniTest::Unit.autorun
