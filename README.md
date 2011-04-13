@@ -30,6 +30,10 @@ Depending on the call you make, glance will sometimes return JSON and others XML
     response = CONNECTION.image true
     puts response
 
+    # This will return a list of only images that are runable (are not aki or ari)
+    response = CONNECTION.image.runable
+    puts response
+
     # This will return headers for a specific image as a hash
     response = CONNECTION.image.find 6
     puts response
