@@ -49,7 +49,7 @@ module Ogle
     ##
     # Kernels and Ramdisks are not runable, so we want to ignore them.
 
-    def public? image
+    def runable? image
       image['container_format'] == "ami" &&
       image['disk_format'] == "ami" &&
       image['properties']['type'] == "machine"
