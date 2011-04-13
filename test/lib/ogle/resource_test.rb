@@ -1,7 +1,7 @@
 require "test_helper"
 
 CONNECTION = Ogle::Client.new(
-  :host => "10.1.170.33"
+  :host => "10.1.170.32"
 )
 
 def must_have_valid_keys response, keys
@@ -61,6 +61,18 @@ describe Ogle::Image do
         properties
         size
       )
+    end
+  end
+
+  describe "#all runable" do
+    before do
+      VCR.use_cassete "images_all_runable" do
+        @response = CONNECTION.image.all.runable
+      end
+    end
+
+    it "returns a hash of all images which are runable" do
+      @response.size.must_be :>=, 1
     end
   end
 

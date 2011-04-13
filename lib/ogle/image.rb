@@ -38,5 +38,21 @@ module Ogle
         end
       end
     end
+
+    def runable
+      all.select do |image|
+      runable? image
+      end
+    end
+
+  private
+    ##
+    # Kernels and Ramdisks are not runable, so we want to ignore them
+  
+    def public? image
+      image['container_format'] == "ami" &&
+      image['disk_format'] == "ami" &&
+      image['properties']['type'] == "machine"
+    end
   end
 end
