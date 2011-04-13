@@ -51,8 +51,7 @@ module Ogle
 
     def runable? image
       image['container_format'] == "ami" &&
-      image['disk_format'] == "ami" &&
-      image['properties']['type'] == "machine"
+      image['disk_format'] == "ami"
     end
   end
 end
