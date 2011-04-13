@@ -1,0 +1,28 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://10.3.170.32:9292/images/detail
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "3113"
+      date: 
+      - Wed, 13 Apr 2011 23:30:22 GMT
+      connection: 
+      - keep-alive
+    body: "{\"images\": [{\"status\": \"active\", \"name\": \"maverick-server-uec-amd64-vmlinuz-virtual\", \"deleted\": false, \"container_format\": \"aki\", \"created_at\": \"2011-04-11T17:18:44\", \"disk_format\": \"aki\", \"updated_at\": \"2011-04-11T17:18:44\", \"id\": 1, \"location\": \"file:///var/lib/glance/images/1\", \"checksum\": \"73152adae523a52d481f5150deb30356\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"arch\": \"amd64\", \"version\": \"2.6.35\", \"type\": \"kernel\", \"uploader\": \"root@cc-01\", \"distro\": \"Ubuntu\"}, \"size\": 4408912}, {\"status\": \"active\", \"name\": \"maverick-server-uec-amd64.img\", \"deleted\": false, \"container_format\": \"ami\", \"created_at\": \"2011-04-11T17:18:45\", \"disk_format\": \"ami\", \"updated_at\": \"2011-04-11T17:18:51\", \"id\": 2, \"location\": \"file:///var/lib/glance/images/2\", \"checksum\": \"d2d3b3049f897dff2f86295d5a9e879e\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"kernel_id\": \"1\", \"type\": \"machine\", \"version\": \"10.10\", \"kernel_name\": \"maverick-server-uec-amd64-vmlinuz-virtual\", \"uploader\": \"root@cc-01\", \"arch\": \"amd64\", \"distro\": \"Ubuntu\"}, \"size\": 1476395008}, {\"status\": \"active\", \"name\": \"CentOS5-5.5-Base_VM-032311-212432\", \"deleted\": false, \"container_format\": \"ami\", \"created_at\": \"2011-04-11T21:04:51\", \"disk_format\": \"ami\", \"updated_at\": \"2011-04-11T21:04:56\", \"id\": 6, \"location\": \"file:///var/lib/glance/images/6\", \"checksum\": \"6277381feb8708c393c64499a0ce7e1e\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"arch\": \"x86_64\", \"version\": \"5.5\", \"type\": \"machine\", \"uploader\": \"root@cc-01\", \"distro\": \"CentOS\"}, \"size\": 816906240}, {\"status\": \"active\", \"name\": \"initrd.img-2.6.28-11-generic\", \"deleted\": false, \"container_format\": \"ari\", \"created_at\": \"2011-04-11T21:18:33\", \"disk_format\": \"ari\", \"updated_at\": \"2011-04-11T21:18:33\", \"id\": 7, \"location\": \"file:///var/lib/glance/images/7\", \"checksum\": \"4ee1b2aa5c15472b41dafe39f4854aac\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"arch\": \"x86_64\", \"type\": \"ramdisk\", \"uploader\": \"root@cc-01\", \"distro\": \"CentOS\"}, \"size\": 8679404}, {\"status\": \"active\", \"name\": \"vmlinuz-2.6.28-11-generic\", \"deleted\": false, \"container_format\": \"aki\", \"created_at\": \"2011-04-11T21:18:34\", \"disk_format\": \"aki\", \"updated_at\": \"2011-04-11T21:18:34\", \"id\": 8, \"location\": \"file:///var/lib/glance/images/8\", \"checksum\": \"d15243d1203d0aecf187ff969d6764ea\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"arch\": \"x86_64\", \"version\": \"2.6.28-11-generic\", \"type\": \"kernel\", \"uploader\": \"root@cc-01\", \"distro\": \"CentOS\"}, \"size\": 3522336}, {\"status\": \"active\", \"name\": \"centos.5-3.x86-64.img\", \"deleted\": false, \"container_format\": \"ami\", \"created_at\": \"2011-04-11T21:18:34\", \"disk_format\": \"ami\", \"updated_at\": \"2011-04-11T21:18:39\", \"id\": 9, \"location\": \"file:///var/lib/glance/images/9\", \"checksum\": \"79523e49084752f61b49398b19831b23\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"kernel_id\": \"8\", \"arch\": \"x86_64\", \"ramdisk_id\": \"7\", \"version\": \"5.3\", \"kernel_name\": \"vmlinuz-2.6.28-11-generic\", \"ramdisk_name\": \"initrd.img-2.6.28-11-generic\", \"uploader\": \"root@cc-01\", \"type\": \"machine\", \"distro\": \"CentOS\"}, \"size\": 1049624576}]}"
+    http_version: "1.1"

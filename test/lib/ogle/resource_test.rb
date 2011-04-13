@@ -18,7 +18,7 @@ describe Ogle::Image do
     end
 
     it "returns a hash of images" do
-      @response.size.must_be :>=, 5
+      @response.size.must_be :>=, 1
     end
 
     it "returns metadata" do
@@ -26,7 +26,7 @@ describe Ogle::Image do
     end
   end
 
-  describe "#all true" do
+  describe "#all with details" do
     before do
       VCR.use_cassette "images_all_with_details" do
         @response = CONNECTION.image.all true
@@ -34,7 +34,7 @@ describe Ogle::Image do
     end
 
     it "returns a detailed hash of images" do
-      @response.size.must_be :>=, 5
+      @response.size.must_be :>=, 1
     end
 
     it "returns metadata" do
@@ -42,18 +42,31 @@ describe Ogle::Image do
     end
   end
 
-  ##
-  # TODO: Make these tests less brittle
-  
-  describe "#all runable" do
+  describe "#runable" do
     before do
-      VCR.use_cassette "images_all_runable" do
+      VCR.use_cassette "images_runable" do
         @response = CONNECTION.image.runable
       end
     end
 
     it "returns a hash of all images which are runable" do
-      @response.size.must_be :==, 3
+      @response.any? { |i| i['id'] != 1}.must_equal true
+    end
+
+    it "returns metadata" do
+      must_have_valid_keys @response.first, METADATA_KEYS
+    end
+  end
+
+  describe "#runable with details" do
+    before do
+      VCR.use_cassette "images_runable_with_details" do
+        @response = CONNECTION.image.runable(true)
+      end
+    end
+
+    it "returns metadata" do
+      must_have_valid_keys @response.first, DETAILED_METADATA_KEYS
     end
   end
 
