@@ -7,11 +7,11 @@ module Ogle
     ##
     # Returns information about images.
     #
-    # +verbose+: A Boolean toggling the returning of
-    # additional image information.
+    # +details+: A Boolean toggling the returning of detailed image
+    # information.
 
-    def all verbose = false
-      path = verbose ? "/images/detail" : "/images"
+    def all details = false
+      path = details ? "/images/detail" : "/images"
 
       response = @connection.get path
 
@@ -39,8 +39,14 @@ module Ogle
       end
     end
 
-    def runable
-      all.select do |image|
+    ##
+    # Return only runable images.
+    #
+    # +details+: A Boolean toggling the returning of detailed image
+    # information.
+
+    def runable details = false
+      all(details).select do |image|
         runable? image
       end
     end

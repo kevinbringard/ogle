@@ -22,20 +22,13 @@ describe Ogle::Image do
     end
 
     it "returns metadata" do
-      must_have_valid_keys @response.first, %w(
-        name
-        container_format
-        disk_format
-        checksum
-        id
-        size
-      )
+      must_have_valid_keys @response.first, METADATA_KEYS
     end
   end
 
   describe "#all true" do
     before do
-      VCR.use_cassette "images_all_verbose" do
+      VCR.use_cassette "images_all_with_details" do
         @response = CONNECTION.image.all true
       end
     end
@@ -45,22 +38,7 @@ describe Ogle::Image do
     end
 
     it "returns metadata" do
-      must_have_valid_keys @response.first, %w(
-        status
-        name
-        deleted
-        container_format
-        created_at
-        disk_format
-        updated_at
-        id
-        location
-        checksum
-        is_public
-        deleted_at
-        properties
-        size
-      )
+      must_have_valid_keys @response.first, DETAILED_METADATA_KEYS
     end
   end
 
@@ -86,25 +64,8 @@ describe Ogle::Image do
       end
     end
 
-    ### TODO: May want to refactor these keys into a variable,
-    ### TODO: since Images#find verbose shares them.
     it "returns X-Image-Meta-* headers as a hash" do
-      must_have_valid_keys @response, %w(
-        status
-        name
-        deleted
-        container_format
-        created_at
-        disk_format
-        updated_at
-        id
-        location
-        checksum
-        is_public
-        deleted_at
-        properties
-        size
-      )
+      must_have_valid_keys @response, DETAILED_METADATA_KEYS
     end
 
     it "returns a nested properties hash" do

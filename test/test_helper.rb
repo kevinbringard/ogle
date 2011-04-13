@@ -3,6 +3,31 @@ Bundler.setup :default, :test
 %w(minitest/spec ogle vcr webmock).each { |r| require r }
 
 class MiniTest::Unit::TestCase
+  METADATA_KEYS = %w(
+    name
+    container_format
+    disk_format
+    checksum
+    id
+    size
+  )
+
+  DETAILED_METADATA_KEYS = %w(
+    status
+    name
+    deleted
+    container_format
+    created_at
+    disk_format
+    updated_at
+    id
+    location
+    checksum
+    is_public
+    deleted_at
+    properties
+    size
+  )
 end
 
 VCR.config do |c|
