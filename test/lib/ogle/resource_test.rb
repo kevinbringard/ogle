@@ -18,7 +18,7 @@ describe Ogle::Image do
     end
 
     it "returns a hash of images" do
-      @response.size.must_be :>=, 1
+      @response.size.must_be :>=, 5
     end
 
     it "returns metadata" do
@@ -41,7 +41,7 @@ describe Ogle::Image do
     end
 
     it "returns a detailed hash of images" do
-      @response.size.must_be :>=, 1
+      @response.size.must_be :>=, 5
     end
 
     it "returns metadata" do
@@ -64,6 +64,9 @@ describe Ogle::Image do
     end
   end
 
+  ##
+  # TODO: Make these tests less brittle
+  
   describe "#all runable" do
     before do
       VCR.use_cassette "images_all_runable" do
@@ -72,7 +75,7 @@ describe Ogle::Image do
     end
 
     it "returns a hash of all images which are runable" do
-      @response.size.must_be :>=, 1
+      @response.size.must_be :==, 3
     end
   end
 
