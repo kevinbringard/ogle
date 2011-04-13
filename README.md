@@ -41,3 +41,8 @@ ruby 1.9.2
 ## Testing
 
     $ bundle exec rake
+
+## TODOs
+
+* Image#all should return all public/runnable images.
+  See lib/nephophobia/image.rb#pubic?
