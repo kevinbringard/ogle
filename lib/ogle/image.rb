@@ -51,6 +51,17 @@ module Ogle
       end
     end
 
+    def create file
+    end
+
+    ##
+    # Delete an image
+    # +image_id+: A String representing an image_id.
+    
+    def delete image_id
+      response = @connection.delete "/images/#{image_id}"
+    end
+
   private
     ##
     # Kernels and Ramdisks are not runable, so we want to ignore them.
