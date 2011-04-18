@@ -38,6 +38,10 @@ Depending on the call you make, glance will sometimes return JSON and others XML
     response = CONNECTION.image.find 6
     puts response
 
+    # This will delete a given image
+    response = CONNECTION.image.delete 6
+    puts response.code
+
 ## Compatability
 
 ruby 1.9.2
