@@ -59,14 +59,12 @@ describe Ogle::Image do
   end
 
   describe "#runable with details" do
-    before do
-      VCR.use_cassette "images_runable_with_details" do
-        @response = CONNECTION.image.runable(true)
-      end
-    end
+    VCR.use_cassette "images_runable_with_details" do
+      response = CONNECTION.image.runable(true)
 
-    it "returns metadata" do
-      must_have_valid_keys @response.first, DETAILED_METADATA_KEYS
+      it "returns metadata" do
+        must_have_valid_keys response.first, DETAILED_METADATA_KEYS
+      end
     end
   end
 
@@ -95,14 +93,12 @@ describe Ogle::Image do
   end
 
   describe "#delete" do
-    before do
-      VCR.use_cassette "image_delete" do
-        @response = CONNECTION.image.delete 15
-        puts response.inspect
+    VCR.use_cassette "image_delete" do
+      response = CONNECTION.image.delete 15
+    
+      it "returns an HTTP/1.1 200 OK" do
+        response.code.must_equal "200"
       end
-    end
-
-    it "returns an HTTP/1.1 200 OK" do
     end
   end
 end
