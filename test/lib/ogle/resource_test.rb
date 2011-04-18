@@ -93,4 +93,16 @@ describe Ogle::Image do
       )
     end
   end
+
+  describe "#delete" do
+    before do
+      VCR.use_cassette "image_delete" do
+        @response = CONNECTION.image.delete 15
+        puts response.inspect
+      end
+    end
+
+    it "returns an HTTP/1.1 200 OK" do
+    end
+  end
 end

@@ -1,0 +1,28 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :delete
+    uri: http://10.3.170.32:9292/images/15
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "0"
+      date: 
+      - Mon, 18 Apr 2011 13:48:38 GMT
+      connection: 
+      - keep-alive
+    body: 
+    http_version: "1.1"
