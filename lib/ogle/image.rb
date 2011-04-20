@@ -55,9 +55,10 @@ module Ogle
     end
 
     ##
-    # Delete an image
+    # Delete an image.
+    #
     # +image_id+: A String representing an image_id.
-    
+
     def delete image_id
       response = @connection.delete "/images/#{image_id}"
     end
