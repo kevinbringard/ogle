@@ -17,9 +17,11 @@ module Ogle
       "ami-#{padded}"
     end
 
-    def initialize hash
+    attr_accessor :attributes
+    def initialize attributes
+      @attributes = attributes
       class << self; self end.instance_eval do
-        hash.each_pair.each do |k, v|
+        attributes.each_pair.each do |k, v|
           define_method k do
             v
           end
