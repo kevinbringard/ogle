@@ -1,5 +1,23 @@
 module Ogle
   class ImageData
+
+    ##
+    # Return a valid ami id from the given 'glance id'.
+    #
+    # +glance_id+: A String representing an image id in glance.
+    #
+    # Note:
+    #   Glance image ids differ from those used by the EC2 API.
+    #   Currently there is no way to query EC2 for a glance_id
+    #   or vice versa.
+
+    def to_ami_id
+      hex    = self.id.to_i.to_s 16
+      padded = hex.to_s.rjust 8,"0"
+
+      "ami-#{padded}"
+    end
+
     def initialize hash
       class << self; self end.instance_eval do
         hash.each_pair.each do |k, v|

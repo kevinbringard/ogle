@@ -106,3 +106,23 @@ describe Ogle::Image do
     end
   end
 end
+
+describe Ogle::ImageData do
+  describe "#to_ami_id" do
+    it "return a valid ami id" do
+      VCR.use_cassette "image_find" do
+        @response = CONNECTION.image.find 6
+
+        @response.to_ami_id.must_equal "ami-00000006"
+      end
+    end
+
+    it "return a valid hex ami id" do
+      VCR.use_cassette "image_find" do
+        @response = CONNECTION.image.find 17
+
+        @response.to_ami_id.must_equal "ami-00000011"
+      end
+    end
+  end
+end

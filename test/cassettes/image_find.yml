@@ -1,0 +1,139 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :head
+    uri: http://10.3.170.32:9292/images/6
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "0"
+      x-image-meta-property-distro: 
+      - CentOS
+      x-image-meta-id: 
+      - "6"
+      x-image-meta-property-arch: 
+      - x86_64
+      x-image-meta-deleted: 
+      - "False"
+      x-image-meta-container-format: 
+      - ami
+      x-image-meta-location: 
+      - file:///var/lib/glance/images/6
+      x-image-meta-deleted-at: 
+      - ""
+      x-image-meta-created-at: 
+      - 2011-04-11T21:04:51
+      x-image-meta-size: 
+      - "816906240"
+      x-image-meta-status: 
+      - active
+      x-image-meta-property-type: 
+      - machine
+      x-image-meta-property-uploader: 
+      - root@cc-01
+      x-image-meta-is-public: 
+      - "True"
+      x-image-meta-updated-at: 
+      - 2011-04-11T21:04:56
+      x-image-meta-checksum: 
+      - 6277381feb8708c393c64499a0ce7e1e
+      x-image-meta-property-version: 
+      - "5.5"
+      x-image-meta-disk-format: 
+      - ami
+      x-image-meta-name: 
+      - CentOS5-5.5-Base_VM-032311-212432
+      location: 
+      - http://10.3.170.32:9292/images/6
+      etag: 
+      - 6277381feb8708c393c64499a0ce7e1e
+      date: 
+      - Thu, 21 Apr 2011 00:17:37 GMT
+      connection: 
+      - keep-alive
+    body: 
+    http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :head
+    uri: http://10.3.170.32:9292/images/17
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "0"
+      x-image-meta-property-distro: 
+      - Ubuntu
+      x-image-meta-id: 
+      - "17"
+      x-image-meta-property-arch: 
+      - amd64
+      x-image-meta-deleted: 
+      - "False"
+      x-image-meta-container-format: 
+      - ami
+      x-image-meta-property-uploader: 
+      - root@e21ab3
+      x-image-meta-location: 
+      - file:///var/lib/glance/images/17
+      x-image-meta-deleted-at: 
+      - ""
+      x-image-meta-created-at: 
+      - 2011-04-18T17:08:02
+      x-image-meta-size: 
+      - "2610561024"
+      x-image-meta-status: 
+      - active
+      x-image-meta-property-type: 
+      - machine
+      x-image-meta-property-kernel-name: 
+      - maverick-server-uec-amd64-vmlinuz-virtual
+      x-image-meta-is-public: 
+      - "True"
+      x-image-meta-property-kernel-id: 
+      - "1"
+      x-image-meta-updated-at: 
+      - 2011-04-18T17:08:32
+      x-image-meta-checksum: 
+      - c283810a95e1c8028cb22ca39f0fc40d
+      x-image-meta-property-version: 
+      - "10.10"
+      x-image-meta-disk-format: 
+      - ami
+      x-image-meta-name: 
+      - maverick-server-uec-amd64-CloudFoundry
+      location: 
+      - http://10.3.170.32:9292/images/17
+      etag: 
+      - c283810a95e1c8028cb22ca39f0fc40d
+      date: 
+      - Thu, 21 Apr 2011 00:17:37 GMT
+      connection: 
+      - keep-alive
+    body: 
+    http_version: "1.1"
