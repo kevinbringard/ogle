@@ -4,15 +4,6 @@ CONNECTION = Ogle::Client.new(
   :host => "10.3.170.32"
 )
 
-def must_have_valid_keys response, keys
-  raise "The response passed in is empty." if response.keys.empty?
-  response.keys.delete_if { |k| keys.include? k }.must_be_empty
-end
-
-def must_have_valid_methods response, keys
-  keys.each { |k| response.respond_to? k }
-end
-
 describe Ogle::Image do
   describe "#all" do
     before do
@@ -104,6 +95,15 @@ describe Ogle::Image do
         response.code.must_equal "200"
       end
     end
+  end
+
+  def must_have_valid_keys response, keys
+    raise "The response passed in is empty." if response.keys.empty?
+    response.keys.delete_if { |k| keys.include? k }.must_be_empty
+  end
+
+  def must_have_valid_methods response, keys
+    keys.each { |k| response.respond_to? k }
   end
 end
 
