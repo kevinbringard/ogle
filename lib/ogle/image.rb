@@ -93,6 +93,14 @@ module Ogle
       response = @connection.delete "/images/#{image_id}"
     end
 
+    ##
+    # Create (upload) an image
+    # +file+: A string representing a file to upload
+    
+    def create file
+    #  response = @connection.post "/images"
+    end
+
   private
     ##
     # Kernels and Ramdisks are not runable, so we want to ignore them.
