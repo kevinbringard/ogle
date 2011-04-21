@@ -9,6 +9,10 @@ def must_have_valid_keys response, keys
   response.keys.delete_if { |k| keys.include? k }.must_be_empty
 end
 
+def must_have_valid_methods response, keys
+  keys.each { |k| response.respond_to? k }
+end
+
 describe Ogle::Image do
   describe "#all" do
     before do
@@ -17,12 +21,12 @@ describe Ogle::Image do
       end
     end
 
-    it "returns a hash of images" do
+    it "returns all images" do
       @response.size.must_be :>=, 1
     end
 
     it "returns metadata" do
-      must_have_valid_keys @response.first, METADATA_KEYS
+      must_have_valid_methods @response.first, METADATA_KEYS
     end
   end
 
@@ -33,12 +37,12 @@ describe Ogle::Image do
       end
     end
 
-    it "returns a detailed hash of images" do
+    it "returns detailed images" do
       @response.size.must_be :>=, 1
     end
 
     it "returns metadata" do
-      must_have_valid_keys @response.first, DETAILED_METADATA_KEYS
+      must_have_valid_methods @response.first, DETAILED_METADATA_KEYS
     end
   end
 
@@ -49,12 +53,12 @@ describe Ogle::Image do
       end
     end
 
-    it "returns a hash of all images which are runable" do
-      @response.any? { |i| i['id'] != 1}.must_equal true
+    it "returns all images which are runable" do
+      @response.any? { |i| i.id != 1}.must_equal true
     end
 
     it "returns metadata" do
-      must_have_valid_keys @response.first, METADATA_KEYS
+      must_have_valid_methods @response.first, METADATA_KEYS
     end
   end
 
@@ -63,7 +67,7 @@ describe Ogle::Image do
       response = CONNECTION.image.runable(true)
 
       it "returns metadata" do
-        must_have_valid_keys response.first, DETAILED_METADATA_KEYS
+        must_have_valid_methods response.first, DETAILED_METADATA_KEYS
       end
     end
   end
@@ -76,11 +80,11 @@ describe Ogle::Image do
     end
 
     it "returns X-Image-Meta-* headers as a hash" do
-      must_have_valid_keys @response, DETAILED_METADATA_KEYS
+      must_have_valid_methods @response, DETAILED_METADATA_KEYS
     end
 
     it "returns a nested properties hash" do
-      must_have_valid_keys @response['properties'], %w(
+      must_have_valid_keys @response.properties, %w(
         distro
         arch
         uploader

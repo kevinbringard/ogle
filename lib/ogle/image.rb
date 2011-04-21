@@ -1,4 +1,16 @@
 module Ogle
+  class ImageData
+    def initialize hash
+      class << self; self end.instance_eval do
+        hash.each_pair.each do |k, v|
+          define_method k do
+            v
+          end
+        end
+      end
+    end
+  end
+
   class Image
     def initialize connection
       @connection = connection
@@ -15,7 +27,9 @@ module Ogle
 
       response = @connection.get path
 
-      response.body['images']
+      response.body['images'].collect do |r|
+        ImageData.new r
+      end
     end
 
     ##
@@ -26,17 +40,19 @@ module Ogle
     def find image_id
       response = @connection.head "/images/#{image_id}"
 
-      Hash.new.tap do |h|
-        properties = h['properties'] = Hash.new
-        response.each_header do |k, v|
-          case k.downcase.tr '-', '_'
-            when %r{^x_image_meta_property_([a-z_]+)$}
-              properties[$1] = v
-            when %r{^x_image_meta_([a-z_]+)$}
-              h[$1] = v
+      ImageData.new(
+        Hash.new.tap do |h|
+          properties = h['properties'] = Hash.new
+          response.each_header do |k, v|
+            case k.downcase.tr '-', '_'
+              when %r{^x_image_meta_property_([a-z_]+)$}
+                properties[$1] = v
+              when %r{^x_image_meta_([a-z_]+)$}
+                h[$1] = v
+            end
           end
         end
-      end
+      )
     end
 
     ##
@@ -49,9 +65,6 @@ module Ogle
       all(details).select do |image|
         runable? image
       end
-    end
-
-    def create file
     end
 
     ##
@@ -68,8 +81,8 @@ module Ogle
     # Kernels and Ramdisks are not runable, so we want to ignore them.
 
     def runable? image
-      image['container_format'] == "ami" &&
-      image['disk_format'] == "ami"
+      image.container_format == "ami" &&
+      image.disk_format == "ami"
     end
   end
 end
