@@ -1,6 +1,5 @@
 module Ogle
   class ImageData
-
     ##
     # Return a valid ami id from the given 'glance id'.
     #
