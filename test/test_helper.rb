@@ -28,7 +28,6 @@ class MiniTest::Unit::TestCase
     properties
     size
   )
-
 end
 
 VCR.config do |c|
