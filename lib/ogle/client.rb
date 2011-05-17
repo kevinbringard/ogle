@@ -8,12 +8,11 @@ module Ogle
 
     def initialize options
       @connection = Hugs::Client.new(
-        :host     => options[:host],
-        :scheme   => options[:scheme] || "http",
-        :port     => options[:port] || 9292,
+        :host         => options[:host],
+        :scheme       => options[:scheme] || "http",
+        :port         => options[:port] || 9292,
+        :raise_errors => true
       )
-      @connection.raise_4xx = true
-      @connection.raise_5xx = true
     end
 
     def image
