@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://10.3.170.32:9292/images/15
+    uri: http://gluster.trunk:9292/images/41
     body: 
     headers: 
       accept: 
@@ -13,16 +13,16 @@
       - 30
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
+      code: 300
+      message: Multiple Choices
     headers: 
       content-type: 
-      - text/html; charset=UTF-8
+      - application/json
       content-length: 
-      - "0"
+      - "114"
       date: 
-      - Mon, 18 Apr 2011 13:48:38 GMT
+      - Sat, 28 May 2011 04:11:37 GMT
       connection: 
       - keep-alive
-    body: 
+    body: "{\"versions\": [{\"status\": \"CURRENT\", \"id\": \"v1.0\", \"links\": [{\"href\": \"http://0.0.0.0:9292/v1/\", \"rel\": \"self\"}]}]}"
     http_version: "1.1"

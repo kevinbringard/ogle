@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :head
-    uri: http://10.1.170.33:9292/images/6
+    uri: http://gluster.trunk:9292/v1/images/4
     body: 
     headers: 
       accept: 
@@ -23,7 +23,7 @@
       x-image-meta-property-distro: 
       - Ubuntu
       x-image-meta-id: 
-      - "6"
+      - "4"
       x-image-meta-property-arch: 
       - amd64
       x-image-meta-deleted: 
@@ -31,13 +31,13 @@
       x-image-meta-container-format: 
       - ami
       x-image-meta-property-uploader: 
-      - root@e3ab3
+      - root@enc1b11
       x-image-meta-location: 
-      - file:///var/lib/glance/images/6
+      - file:///var/lib/glance/images/4
       x-image-meta-deleted-at: 
       - ""
       x-image-meta-created-at: 
-      - 2011-04-06T20:04:48.664176
+      - 2011-05-11T15:48:02
       x-image-meta-size: 
       - "1476395008"
       x-image-meta-status: 
@@ -45,94 +45,27 @@
       x-image-meta-property-type: 
       - machine
       x-image-meta-property-kernel-name: 
-      - maverick-server-uec-amd64-vmlinuz-virtual
+      - natty-server-uec-amd64-vmlinuz-virtual
       x-image-meta-is-public: 
       - "True"
       x-image-meta-property-kernel-id: 
-      - "5"
+      - "3"
       x-image-meta-updated-at: 
-      - 2011-04-06T20:04:57.042658
+      - 2011-05-11T15:48:08
       x-image-meta-checksum: 
-      - d511da81009517c53f36ff4e8602ff62
+      - b6149317c554d2c335365e7bd43e9bf0
       x-image-meta-property-version: 
-      - "10.10"
+      - "11.04"
       x-image-meta-disk-format: 
       - ami
       x-image-meta-name: 
-      - maverick-server-uec-amd64.img
+      - natty-server-uec-amd64.img
       location: 
-      - http://10.1.170.33:9292/images/6
+      - http://gluster.trunk:9292/v1/images/4
       etag: 
-      - d511da81009517c53f36ff4e8602ff62
+      - b6149317c554d2c335365e7bd43e9bf0
       date: 
-      - Fri, 08 Apr 2011 17:56:53 GMT
-      connection: 
-      - keep-alive
-    body: 
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :head
-    uri: http://10.3.170.32:9292/images/6
-    body: 
-    headers: 
-      accept: 
-      - application/json
-      connection: 
-      - keep-alive
-      keep-alive: 
-      - 30
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 200
-      message: OK
-    headers: 
-      content-type: 
-      - text/html; charset=UTF-8
-      content-length: 
-      - "0"
-      x-image-meta-property-distro: 
-      - CentOS
-      x-image-meta-id: 
-      - "6"
-      x-image-meta-property-arch: 
-      - x86_64
-      x-image-meta-deleted: 
-      - "False"
-      x-image-meta-container-format: 
-      - ami
-      x-image-meta-location: 
-      - file:///var/lib/glance/images/6
-      x-image-meta-deleted-at: 
-      - ""
-      x-image-meta-created-at: 
-      - 2011-04-11T21:04:51
-      x-image-meta-size: 
-      - "816906240"
-      x-image-meta-status: 
-      - active
-      x-image-meta-property-type: 
-      - machine
-      x-image-meta-property-uploader: 
-      - root@cc-01
-      x-image-meta-is-public: 
-      - "True"
-      x-image-meta-updated-at: 
-      - 2011-04-11T21:04:56
-      x-image-meta-checksum: 
-      - 6277381feb8708c393c64499a0ce7e1e
-      x-image-meta-property-version: 
-      - "5.5"
-      x-image-meta-disk-format: 
-      - ami
-      x-image-meta-name: 
-      - CentOS5-5.5-Base_VM-032311-212432
-      location: 
-      - http://10.3.170.32:9292/images/6
-      etag: 
-      - 6277381feb8708c393c64499a0ce7e1e
-      date: 
-      - Wed, 13 Apr 2011 22:32:26 GMT
+      - Sat, 28 May 2011 02:32:56 GMT
       connection: 
       - keep-alive
     body: 

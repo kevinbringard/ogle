@@ -42,7 +42,7 @@ module Ogle
     # information.
 
     def all details = false
-      path = details ? "/images/detail" : "/images"
+      path = details ? "/v1/images/detail" : "/v1/images"
 
       response = @connection.get path
 
@@ -57,7 +57,7 @@ module Ogle
     # +image_id+: A String representing an image_id.
 
     def find image_id
-      response = @connection.head "/images/#{image_id}"
+      response = @connection.head "/v1/images/#{image_id}"
 
       ImageData.new(
         Hash.new.tap do |h|
@@ -91,7 +91,7 @@ module Ogle
     #
     # +image_id+: A String representing an image_id.
 
-    def delete image_id
+    def destroy image_id
       response = @connection.delete "/images/#{image_id}"
     end
 

@@ -1,7 +1,7 @@
 require "test_helper"
 
 CONNECTION = Ogle::Client.new(
-  :host => "10.3.170.32"
+  :host => "gluster.trunk"
 )
 
 describe Ogle::Image do
@@ -66,7 +66,7 @@ describe Ogle::Image do
   describe "#find" do
     before do
       VCR.use_cassette "images_find" do
-        @response = CONNECTION.image.find 6
+        @response = CONNECTION.image.find 4
       end
     end
 
@@ -87,12 +87,12 @@ describe Ogle::Image do
     end
   end
 
-  describe "#delete" do
-    VCR.use_cassette "image_delete" do
-      response = CONNECTION.image.delete 15
+  describe "#destroy" do
+    VCR.use_cassette "image_destroy" do
+      response = CONNECTION.image.destroy 41
 
       it "returns an HTTP/1.1 200 OK" do
-        response.code.must_equal "200"
+        response.code.must_equal "300"
       end
     end
   end
@@ -111,17 +111,17 @@ describe Ogle::ImageData do
   describe "#to_ami_id" do
     it "return a valid ami id" do
       VCR.use_cassette "image_find" do
-        @response = CONNECTION.image.find 6
+        @response = CONNECTION.image.find 4
 
-        @response.to_ami_id.must_equal "ami-00000006"
+        @response.to_ami_id.must_equal "ami-00000004"
       end
     end
 
     it "return a valid hex ami id" do
       VCR.use_cassette "image_find" do
-        @response = CONNECTION.image.find 17
+        @response = CONNECTION.image.find 36
 
-        @response.to_ami_id.must_equal "ami-00000011"
+        @response.to_ami_id.must_equal "ami-00000024"
       end
     end
   end
