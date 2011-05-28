@@ -6,8 +6,8 @@ Gem::Specification.new do |s|
   s.name        = "ogle"
   s.version     = Ogle::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Kevin Bringard"]
-  s.email       = ["kbringard@attinteractive.com"]
+  s.authors     = ["Kevin Bringard", "John Dewey"]
+  s.email       = ["kbringard@attinteractive.com", "john@dewey.ws"]
   s.homepage    = %q{http://github.com/kevinbringard/ogle}
   s.summary     = %q{Ruby interface for OpenStack Glance}
   s.description = %q{Exposes the API for OpenStack Glance. Go ahead and ogle, it's so much more than a glance.}
