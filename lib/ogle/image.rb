@@ -95,6 +95,11 @@ module Ogle
       response = @connection.delete "/images/#{image_id}"
     end
 
+    def create file, name, meta
+      headers = { "x-image-meta-name" => name }.merge meta
+      response = @connection.post "/images", :upload => { :file => file, :headers => headers }
+    end
+
   private
     ##
     # Kernels and Ramdisks are not runable, so we want to ignore them.

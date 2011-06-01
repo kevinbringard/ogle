@@ -2,6 +2,8 @@ Bundler.setup :default, :test
 
 %w(minitest/spec ogle vcr webmock).each { |r| require r }
 
+-TEST_ROOT     = File.dirname File.expand_path __FILE__
+
 class MiniTest::Unit::TestCase
   METADATA_KEYS = %w(
     name

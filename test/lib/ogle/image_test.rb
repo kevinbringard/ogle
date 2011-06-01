@@ -1,7 +1,7 @@
 require "test_helper"
 
 CONNECTION = Ogle::Client.new(
-  :host => "gluster.trunk"
+  :host => "glance.trunk"
 )
 
 describe Ogle::Image do
@@ -91,11 +91,24 @@ describe Ogle::Image do
     VCR.use_cassette "image_destroy" do
       response = CONNECTION.image.destroy 41
 
-      it "returns an HTTP/1.1 200 OK" do
+      it "returns an HTTP/1.1 300 OK" do
         response.code.must_equal "300"
       end
     end
   end
+
+  describe "#create" do
+    VCR.use_cassette "image_create" do
+      testfile = File.join TEST_ROOT, "support", "test-image"
+      metadata = { "x-image-meta-property-test" => "yes", "x-image-meta-property-distro" => "test-distro", "x-image-meta-property-version" => "test-version-1" }
+      reponse = CONNECTION.image.create testfile "test-image-name" metadata
+
+      it "returns an HTTP/1.1 200 OK" do
+        response.code.must_equal "200"
+      end
+    end
+  end
+
 
   def must_have_valid_keys response, keys
     raise "The response passed in is empty." if response.keys.empty?
