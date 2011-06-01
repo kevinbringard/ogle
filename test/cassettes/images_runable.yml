@@ -26,3 +26,30 @@
       - keep-alive
     body: "{\"images\": [{\"name\": \"maverick-server-uec-amd64-vmlinuz-virtual\", \"container_format\": \"aki\", \"disk_format\": \"aki\", \"checksum\": \"83d999516352e8311f5ee9a314679b6c\", \"id\": 1, \"size\": 4408496}, {\"name\": \"maverick-server-uec-amd64.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"04845edf42118420a9d13a53186a5f59\", \"id\": 2, \"size\": 1476395008}, {\"name\": \"natty-server-uec-amd64-vmlinuz-virtual\", \"container_format\": \"aki\", \"disk_format\": \"aki\", \"checksum\": \"55c855957ae2ca4b476dabc26dbb1685\", \"id\": 3, \"size\": 4592768}, {\"name\": \"natty-server-uec-amd64.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"b6149317c554d2c335365e7bd43e9bf0\", \"id\": 4, \"size\": 1476395008}, {\"name\": \"Gateway-copy.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"86c2df3d9d60fe41577aca870ee89b41\", \"id\": 16, \"size\": 21474836480}, {\"name\": \"CentOS-5.4-cloudinit\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"8731b6dcb85e7554cc69aeb8acc6ad09\", \"id\": 36, \"size\": 1430192128}, {\"name\": \"OpenVPN_Cloudpipe-base-v1\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"396c52780d4624d574704cf578e7e7dd\", \"id\": 37, \"size\": 637403136}, {\"name\": \"OpenVPN_Cloudpipe-base-v1.1\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"50b799cc99724691129a95b44256c6e1\", \"id\": 38, \"size\": 637534208}, {\"name\": \"kvm1.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"0d36e66650833b38bba46da56a35820f\", \"id\": 41, \"size\": 20971520000}, {\"name\": \"CentOS-5.6-cloudinit\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"654fb40e9c3c2917a10b7475ce895e57\", \"id\": 48, \"size\": 2362245120}]}"
     http_version: "1.1"
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :get
+    uri: http://glance.trunk:9292/v1/images
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "1662"
+      date: 
+      - Wed, 01 Jun 2011 21:01:44 GMT
+      connection: 
+      - keep-alive
+    body: "{\"images\": [{\"name\": \"CentOS-5.6-cloudinit\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"654fb40e9c3c2917a10b7475ce895e57\", \"id\": 48, \"size\": 2362245120}, {\"name\": \"kvm1.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"0d36e66650833b38bba46da56a35820f\", \"id\": 41, \"size\": 20971520000}, {\"name\": \"OpenVPN_Cloudpipe-base-v1.1\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"50b799cc99724691129a95b44256c6e1\", \"id\": 38, \"size\": 637534208}, {\"name\": \"OpenVPN_Cloudpipe-base-v1\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"396c52780d4624d574704cf578e7e7dd\", \"id\": 37, \"size\": 637403136}, {\"name\": \"CentOS-5.4-cloudinit\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"8731b6dcb85e7554cc69aeb8acc6ad09\", \"id\": 36, \"size\": 1430192128}, {\"name\": \"Gateway-copy.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"86c2df3d9d60fe41577aca870ee89b41\", \"id\": 16, \"size\": 21474836480}, {\"name\": \"natty-server-uec-amd64.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"b6149317c554d2c335365e7bd43e9bf0\", \"id\": 4, \"size\": 1476395008}, {\"name\": \"natty-server-uec-amd64-vmlinuz-virtual\", \"container_format\": \"aki\", \"disk_format\": \"aki\", \"checksum\": \"55c855957ae2ca4b476dabc26dbb1685\", \"id\": 3, \"size\": 4592768}, {\"name\": \"maverick-server-uec-amd64.img\", \"container_format\": \"ami\", \"disk_format\": \"ami\", \"checksum\": \"04845edf42118420a9d13a53186a5f59\", \"id\": 2, \"size\": 1476395008}, {\"name\": \"maverick-server-uec-amd64-vmlinuz-virtual\", \"container_format\": \"aki\", \"disk_format\": \"aki\", \"checksum\": \"83d999516352e8311f5ee9a314679b6c\", \"id\": 1, \"size\": 4408496}]}"
+    http_version: "1.1"

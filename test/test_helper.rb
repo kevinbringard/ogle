@@ -2,7 +2,7 @@ Bundler.setup :default, :test
 
 %w(minitest/spec ogle vcr webmock).each { |r| require r }
 
--TEST_ROOT     = File.dirname File.expand_path __FILE__
+TEST_ROOT = File.dirname File.expand_path __FILE__
 
 class MiniTest::Unit::TestCase
   METADATA_KEYS = %w(
@@ -35,7 +35,7 @@ end
 VCR.config do |c|
   c.stub_with :webmock
   c.cassette_library_dir     = "test/cassettes"
-  c.default_cassette_options = { :record => :none }
+  c.default_cassette_options = { :record => :new_episodes }
 end
 
 MiniTest::Unit.autorun

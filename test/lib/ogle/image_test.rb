@@ -100,8 +100,13 @@ describe Ogle::Image do
   describe "#create" do
     VCR.use_cassette "image_create" do
       testfile = File.join TEST_ROOT, "support", "test-image"
-      metadata = { "x-image-meta-property-test" => "yes", "x-image-meta-property-distro" => "test-distro", "x-image-meta-property-version" => "test-version-1" }
-      reponse = CONNECTION.image.create testfile "test-image-name" metadata
+      metadata = { 
+        "x-image-meta-property-test" => "yes",
+        "x-image-meta-property-distro" => "test-distro",
+        "x-image-meta-property-version" => "test-version-1"
+      }
+
+      response = CONNECTION.image.create "#{testfile}", "test-image", metadata
 
       it "returns an HTTP/1.1 200 OK" do
         response.code.must_equal "200"
