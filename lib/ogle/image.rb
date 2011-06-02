@@ -96,12 +96,12 @@ module Ogle
     end
 
     ##
-    # Upload (create) a new image
+    # Upload (create) a new image.
     #
-    # +file+: The file to upload
-    # +name+: The name of the file in glance (x-image-meta-name)
-    # +meta+: A hash of custom defined metadata to be added to the image (x-image-meta-properties-*)
-    
+    # +file+: The file to upload.
+    # +name+: The name of the file in glance (x-image-meta-name).
+    # +meta+: A hash of custom defined metadata to be added to the image (x-image-meta-properties-*).
+
     def create file, name, meta
       headers = { "x-image-meta-name" => name }.merge meta
       response = @connection.post "/v1/images", :upload => { :file => file, :headers => headers }
