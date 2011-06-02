@@ -104,7 +104,7 @@ module Ogle
     
     def create file, name, meta
       headers = { "x-image-meta-name" => name }.merge meta
-      response = @connection.post "/images", :upload => { :file => file, :headers => headers }
+      response = @connection.post "/v1/images", :upload => { :file => file, :headers => headers }
     end
 
   private

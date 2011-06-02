@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "hugs", "~> 2.6.0"
 
-  s.add_development_dependency "rake"
+  s.add_development_dependency "rake", "0.8.7"
   s.add_development_dependency "vcr", "1.5.0"
   s.add_development_dependency "webmock"
   s.add_development_dependency "minitest"

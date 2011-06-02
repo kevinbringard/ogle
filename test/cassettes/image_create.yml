@@ -1,0 +1,50 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :post
+    uri: http://glance.trunk:9292/v1/images
+    body: |
+      Test-Image
+
+    headers: 
+      accept: 
+      - application/json
+      content-type: 
+      - application/octet-stream
+      content-length: 
+      - 11
+      transfer-encoding: 
+      - chunked
+      x-image-meta-name: 
+      - test-image
+      x-image-meta-is-public: 
+      - "true"
+      x-image-meta-property-test: 
+      - "yes"
+      x-image-meta-property-distro: 
+      - test-distro
+      x-image-meta-property-version: 
+      - test-version-1
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 201
+      message: Created
+    headers: 
+      content-type: 
+      - text/plain; charset=UTF-8
+      content-length: 
+      - "434"
+      location: 
+      - http://glance.trunk:9292/v1/images/56
+      etag: 
+      - 8cb22c184821cdc62a9dc5c34cf8a125
+      date: 
+      - Thu, 02 Jun 2011 15:20:11 GMT
+      connection: 
+      - keep-alive
+    body: "{\"image\": {\"status\": \"active\", \"name\": \"test-image\", \"deleted\": false, \"container_format\": null, \"created_at\": \"2011-06-02T15:20:11\", \"disk_format\": null, \"updated_at\": \"2011-06-02T15:20:11\", \"id\": 56, \"location\": \"file:///var/lib/glance/images/56\", \"checksum\": \"8cb22c184821cdc62a9dc5c34cf8a125\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"test\": \"yes\", \"version\": \"test-version-1\", \"distro\": \"test-distro\"}, \"size\": 11}}"
+    http_version: "1.1"
