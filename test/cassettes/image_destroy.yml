@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :delete
-    uri: http://gluster.trunk:9292/images/41
+    uri: http://glance.trunk:9292/v1/images/56
     body: 
     headers: 
       accept: 
@@ -13,43 +13,16 @@
       - 30
   response: !ruby/struct:VCR::Response 
     status: !ruby/struct:VCR::ResponseStatus 
-      code: 300
-      message: Multiple Choices
+      code: 200
+      message: OK
     headers: 
       content-type: 
-      - application/json
+      - text/html; charset=UTF-8
       content-length: 
-      - "114"
+      - "0"
       date: 
-      - Sat, 28 May 2011 04:11:37 GMT
+      - Thu, 02 Jun 2011 15:38:50 GMT
       connection: 
       - keep-alive
-    body: "{\"versions\": [{\"status\": \"CURRENT\", \"id\": \"v1.0\", \"links\": [{\"href\": \"http://0.0.0.0:9292/v1/\", \"rel\": \"self\"}]}]}"
-    http_version: "1.1"
-- !ruby/struct:VCR::HTTPInteraction 
-  request: !ruby/struct:VCR::Request 
-    method: :delete
-    uri: http://glance.trunk:9292/images/41
     body: 
-    headers: 
-      accept: 
-      - application/json
-      connection: 
-      - keep-alive
-      keep-alive: 
-      - 30
-  response: !ruby/struct:VCR::Response 
-    status: !ruby/struct:VCR::ResponseStatus 
-      code: 300
-      message: Multiple Choices
-    headers: 
-      content-type: 
-      - application/json
-      content-length: 
-      - "114"
-      date: 
-      - Wed, 01 Jun 2011 21:01:43 GMT
-      connection: 
-      - keep-alive
-    body: "{\"versions\": [{\"status\": \"CURRENT\", \"id\": \"v1.0\", \"links\": [{\"href\": \"http://0.0.0.0:9292/v1/\", \"rel\": \"self\"}]}]}"
     http_version: "1.1"

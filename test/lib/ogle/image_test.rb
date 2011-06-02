@@ -89,10 +89,10 @@ describe Ogle::Image do
 
   describe "#destroy" do
     VCR.use_cassette "image_destroy" do
-      response = CONNECTION.image.destroy 41
+      response = CONNECTION.image.destroy 56
 
-      it "returns an HTTP/1.1 300 OK" do
-        response.code.must_equal "300"
+      it "returns an HTTP/1.1 200 OK" do
+        response.code.must_equal "200"
       end
     end
   end

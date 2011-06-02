@@ -92,7 +92,7 @@ module Ogle
     # +image_id+: A String representing an image_id.
 
     def destroy image_id
-      response = @connection.delete "/images/#{image_id}"
+      response = @connection.delete "/v1/images/#{image_id}"
     end
 
     ##
