@@ -116,7 +116,7 @@ describe Ogle::Image do
   describe "#create" do
     before do
       VCR.use_cassette "image_create" do
-        @response = upload "test_image"
+        @response = upload "image_create"
       end
     end
 
@@ -141,6 +141,12 @@ describe Ogle::Image do
   # - Upload image to update in setup.
 
   #describe "#update" do
+  #  before do
+  #    VCR.use_cassette "image_update" do
+  #      @response = upload "image_update"
+  #    end
+  #  end
+
   #  VCR.use_cassette "image_update" do
   #    metadata = {
   #      "x-image-meta-is-public"        => "true",
