@@ -7,7 +7,7 @@ CONNECTION = Ogle::Client.new(
 describe Ogle::Image do
   describe "#all" do
     before do
-      VCR.use_cassette "images_all" do
+      VCR.use_cassette "image_all" do
         @response = CONNECTION.image.all
       end
     end
@@ -23,23 +23,23 @@ describe Ogle::Image do
 
   describe "#all with details" do
     before do
-      VCR.use_cassette "images_all_with_details" do
+      VCR.use_cassette "image_all_with_details" do
         @response = CONNECTION.image.all true
       end
     end
 
-    it "returns detailed images" do
+    it "returns all images with details" do
       @response.size.must_be :>=, 1
     end
 
-    it "returns metadata" do
+    it "returns metadata with details" do
       must_have_valid_methods @response.first, DETAILED_METADATA_KEYS
     end
   end
 
   describe "#runable" do
     before do
-      VCR.use_cassette "images_runable" do
+      VCR.use_cassette "image_runable" do
         @response = CONNECTION.image.runable
       end
     end
@@ -54,23 +54,26 @@ describe Ogle::Image do
   end
 
   describe "#runable with details" do
-    VCR.use_cassette "images_runable_with_details" do
-      response = CONNECTION.image.runable(true)
+    VCR.use_cassette "image_runable_with_details" do
+      response = CONNECTION.image.runable true
 
-      it "returns metadata" do
+      it "returns metadata with details" do
         must_have_valid_methods response.first, DETAILED_METADATA_KEYS
       end
     end
   end
 
+  ### TODO:
+  # - Upload image to find in setup.
+
   describe "#find" do
     before do
-      VCR.use_cassette "images_find" do
+      VCR.use_cassette "image_find" do
         @response = CONNECTION.image.find 4
       end
     end
 
-    it "returns X-Image-Meta-* headers as a hash" do
+    it "returns metadata with details" do
       must_have_valid_methods @response, DETAILED_METADATA_KEYS
     end
 
@@ -87,6 +90,10 @@ describe Ogle::Image do
     end
   end
 
+  ### TODO:
+  # - Return an Object
+  # - Upload image to destroy in setup.
+
   describe "#destroy" do
     VCR.use_cassette "image_destroy" do
       response = CONNECTION.image.destroy 56
@@ -97,40 +104,43 @@ describe Ogle::Image do
     end
   end
 
-  describe "#create" do
-    VCR.use_cassette "image_create" do
-      testfile = File.join TEST_ROOT, "support", "test-image"
-      metadata = {
-        "x-image-meta-is-public" => "true",
-        "x-image-meta-property-test" => "yes",
-        "x-image-meta-property-distro" => "test-distro",
-        "x-image-meta-property-version" => "test-version-1"
-      }
+  #describe "#create" do
+  #  VCR.use_cassette "image_create" do
+  #    testfile = File.join TEST_ROOT, "support", "test-image"
+  #    metadata = {
+  #      "x-image-meta-is-public"        => "true",
+  #      "x-image-meta-property-test"    => "yes",
+  #      "x-image-meta-property-distro"  => "test-distro",
+  #      "x-image-meta-property-version" => "test-version-1"
+  #    }
 
-      response = CONNECTION.image.create "#{testfile}", "test-image", metadata
+  #    response = CONNECTION.image.create "#{testfile}", "test-image", metadata
 
-      it "returns an HTTP/1.1 201 OK" do
-        response.code.must_equal "201"
-      end
-    end
-  end
+  #    it "returns an HTTP/1.1 201 OK" do
+  #      response.code.must_equal "201"
+  #    end
+  #  end
+  #end
 
-  describe "#update" do
-    VCR.use_cassette "image_update" do
-      metadata = {
-        "x-image-meta-is-public" => "true",
-        "x-image-met-property-test" => "yes-updated",
-        "x-image-meta-property-distro" => "test-distro-updated",
-        "x-image-meta-property-version" => "test-version-1.1"
-      }
+  ### TODO:
+  # - Upload image to update in setup.
 
-      response = CONNECTION.image.update "56", metadata
+  #describe "#update" do
+  #  VCR.use_cassette "image_update" do
+  #    metadata = {
+  #      "x-image-meta-is-public"        => "true",
+  #      "x-image-met-property-test"     => "yes-updated",
+  #      "x-image-meta-property-distro"  => "test-distro-updated",
+  #      "x-image-meta-property-version" => "test-version-1.1"
+  #    }
 
-      it "returns an HTTP/1.1 200 OK" do
-        reponse.code.must_equal "200"
-      end
-    end
-  end
+  #    response = CONNECTION.image.update "56", metadata
+
+  #    it "returns an HTTP/1.1 200 OK" do
+  #      reponse.code.must_equal "200"
+  #    end
+  #  end
+  #end
 
   def must_have_valid_keys response, keys
     raise "The response passed in is empty." if response.keys.empty?
@@ -142,22 +152,22 @@ describe Ogle::Image do
   end
 end
 
-describe Ogle::ImageData do
-  describe "#to_ami_id" do
-    it "return a valid ami id" do
-      VCR.use_cassette "image_find" do
-        @response = CONNECTION.image.find 4
+#describe Ogle::ImageData do
+#  describe "#to_ami_id" do
+#    it "return a valid ami id" do
+#      VCR.use_cassette "image_find" do
+#        @response = CONNECTION.image.find 4
 
-        @response.to_ami_id.must_equal "ami-00000004"
-      end
-    end
+#        @response.to_ami_id.must_equal "ami-00000004"
+#      end
+#    end
 
-    it "return a valid hex ami id" do
-      VCR.use_cassette "image_find" do
-        @response = CONNECTION.image.find 36
+#    it "return a valid hex ami id" do
+#      VCR.use_cassette "image_find" do
+#        @response = CONNECTION.image.find 36
 
-        @response.to_ami_id.must_equal "ami-00000024"
-      end
-    end
-  end
-end
+#        @response.to_ami_id.must_equal "ami-00000024"
+#      end
+#    end
+#  end
+#end
