@@ -63,13 +63,17 @@ describe Ogle::Image do
     end
   end
 
-  ### TODO:
-  # - Upload image to find in setup.
-
   describe "#find" do
     before do
       VCR.use_cassette "image_find" do
-        @response = CONNECTION.image.find 4
+        @image_id = upload("image_find").id
+        @response = CONNECTION.image.find @image_id
+      end
+    end
+
+    after do
+      VCR.use_cassette "image_find" do
+        CONNECTION.image.destroy @image_id
       end
     end
 
@@ -92,13 +96,18 @@ describe Ogle::Image do
 
   ### TODO:
   # - Return an Object
-  # - Upload image to destroy in setup.
 
   describe "#destroy" do
-    VCR.use_cassette "image_destroy" do
-      response = CONNECTION.image.destroy 56
+    before do
+      VCR.use_cassette "image_destroy" do
+        @image_id = upload("image_destroy").id
+      end
+    end
 
-      it "returns OK" do
+    it "returns OK" do
+      VCR.use_cassette "image_destroy" do
+        response = CONNECTION.image.destroy @image_id
+
         response.code.must_equal "200"
       end
     end
@@ -117,9 +126,12 @@ describe Ogle::Image do
 
     it "returns a nested properties hash" do
       must_have_valid_keys @response.properties, %w(
-        public
-        test
         distro
+        arch
+        uploader
+        type
+        kernel_name
+        kernel_id
         version
       )
     end
@@ -157,32 +169,46 @@ describe Ogle::Image do
   def upload name
     image    = File.join TEST_ROOT, "support", "test-image"
     metadata = {
-      "x-image-meta-is-public"        => "true",
-      "x-image-meta-property-test"    => "yes",
-      "x-image-meta-property-distro"  => "test-distro",
-      "x-image-meta-property-version" => "test-version-1"
+      "x-image-meta-is-public"            => "true",
+      "x-image-meta-property-distro"      => "test-distro",
+      "x-image-meta-property-arch"        => "test-arch",
+      "x-image-meta-property-uploader"    => "test-uploader",
+      "x-image-meta-property-type"        => "test-type",
+      "x-image-meta-property-kernel_name" => "test-kernel-name",
+      "x-image-meta-property-kernel_id"   => "test-kernel-id",
+      "x-image-meta-property-version"     => "test-version"
     }
 
     CONNECTION.image.create name, image, metadata
   end
 end
 
-#describe Ogle::ImageData do
-#  describe "#to_ami_id" do
-#    it "return a valid ami id" do
-#      VCR.use_cassette "image_find" do
-#        @response = CONNECTION.image.find 4
+##
+# These test expect images with ids of:
+#   - for decimal (0-9)
+#   - for hex >9
 
-#        @response.to_ami_id.must_equal "ami-00000004"
-#      end
-#    end
+describe Ogle::ImageData do
+  before do
+    @decimal_image_id     = 4
+    @hexadecimal_image_id = 36
+  end
+  
+  describe "#to_ami_id" do
+    it "return a valid ami id" do
+      VCR.use_cassette "image_find_with_decimal" do
+        @response = CONNECTION.image.find @decimal_image_id
 
-#    it "return a valid hex ami id" do
-#      VCR.use_cassette "image_find" do
-#        @response = CONNECTION.image.find 36
+        @response.to_ami_id.must_equal "ami-00000004"
+      end
+    end
 
-#        @response.to_ami_id.must_equal "ami-00000024"
-#      end
-#    end
-#  end
-#end
+    it "return a valid hex ami id" do
+      VCR.use_cassette "image_find_with_hexadecimal" do
+        @response = CONNECTION.image.find @hexadecimal_image_id
+
+        @response.to_ami_id.must_equal "ami-00000024"
+      end
+    end
+  end
+end

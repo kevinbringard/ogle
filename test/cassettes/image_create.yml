@@ -16,15 +16,23 @@
       transfer-encoding: 
       - chunked
       x-image-meta-name: 
-      - test-image
+      - test_image
       x-image-meta-is-public: 
       - "true"
-      x-image-meta-property-test: 
-      - "yes"
       x-image-meta-property-distro: 
       - test-distro
+      x-image-meta-property-arch: 
+      - test-arch
+      x-image-meta-property-uploader: 
+      - test-uploader
+      x-image-meta-property-type: 
+      - test-type
+      x-image-meta-property-kernel-name: 
+      - test-kernel-name
+      x-image-meta-property-kernel-id: 
+      - test-kernel-id
       x-image-meta-property-version: 
-      - test-version-1
+      - test-version
       connection: 
       - keep-alive
       keep-alive: 
@@ -37,14 +45,14 @@
       content-type: 
       - text/plain; charset=UTF-8
       content-length: 
-      - "434"
+      - "554"
       location: 
-      - http://glance.trunk:9292/v1/images/56
+      - http://glance.trunk:9292/v1/images/68
       etag: 
       - 8cb22c184821cdc62a9dc5c34cf8a125
       date: 
-      - Thu, 02 Jun 2011 15:20:11 GMT
+      - Tue, 07 Jun 2011 23:40:56 GMT
       connection: 
       - keep-alive
-    body: "{\"image\": {\"status\": \"active\", \"name\": \"test-image\", \"deleted\": false, \"container_format\": null, \"created_at\": \"2011-06-02T15:20:11\", \"disk_format\": null, \"updated_at\": \"2011-06-02T15:20:11\", \"id\": 56, \"location\": \"file:///var/lib/glance/images/56\", \"checksum\": \"8cb22c184821cdc62a9dc5c34cf8a125\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"test\": \"yes\", \"version\": \"test-version-1\", \"distro\": \"test-distro\"}, \"size\": 11}}"
+    body: "{\"image\": {\"status\": \"active\", \"name\": \"test_image\", \"deleted\": false, \"container_format\": null, \"created_at\": \"2011-06-07T23:40:56\", \"disk_format\": null, \"updated_at\": \"2011-06-07T23:40:56\", \"id\": 68, \"location\": \"file:///var/lib/glance/images/68\", \"checksum\": \"8cb22c184821cdc62a9dc5c34cf8a125\", \"is_public\": true, \"deleted_at\": null, \"properties\": {\"kernel_id\": \"test-kernel-id\", \"type\": \"test-type\", \"version\": \"test-version\", \"kernel_name\": \"test-kernel-name\", \"uploader\": \"test-uploader\", \"arch\": \"test-arch\", \"distro\": \"test-distro\"}, \"size\": 11}}"
     http_version: "1.1"

@@ -1,0 +1,72 @@
+--- 
+- !ruby/struct:VCR::HTTPInteraction 
+  request: !ruby/struct:VCR::Request 
+    method: :head
+    uri: http://glance.trunk:9292/v1/images/4
+    body: 
+    headers: 
+      accept: 
+      - application/json
+      connection: 
+      - keep-alive
+      keep-alive: 
+      - 30
+  response: !ruby/struct:VCR::Response 
+    status: !ruby/struct:VCR::ResponseStatus 
+      code: 200
+      message: OK
+    headers: 
+      content-type: 
+      - text/html; charset=UTF-8
+      content-length: 
+      - "0"
+      x-image-meta-property-distro: 
+      - Ubuntu
+      x-image-meta-id: 
+      - "4"
+      x-image-meta-property-arch: 
+      - amd64
+      x-image-meta-deleted: 
+      - "False"
+      x-image-meta-container-format: 
+      - ami
+      x-image-meta-property-uploader: 
+      - root@enc1b11
+      x-image-meta-location: 
+      - file:///var/lib/glance/images/4
+      x-image-meta-deleted-at: 
+      - ""
+      x-image-meta-created-at: 
+      - 2011-05-11T15:48:02
+      x-image-meta-size: 
+      - "1476395008"
+      x-image-meta-status: 
+      - active
+      x-image-meta-property-type: 
+      - machine
+      x-image-meta-property-kernel-name: 
+      - natty-server-uec-amd64-vmlinuz-virtual
+      x-image-meta-is-public: 
+      - "True"
+      x-image-meta-property-kernel-id: 
+      - "3"
+      x-image-meta-updated-at: 
+      - 2011-05-11T15:48:08
+      x-image-meta-checksum: 
+      - b6149317c554d2c335365e7bd43e9bf0
+      x-image-meta-property-version: 
+      - "11.04"
+      x-image-meta-disk-format: 
+      - ami
+      x-image-meta-name: 
+      - ubuntu_11.04-amd64
+      location: 
+      - http://glance.trunk:9292/v1/images/4
+      etag: 
+      - b6149317c554d2c335365e7bd43e9bf0
+      date: 
+      - Tue, 07 Jun 2011 23:43:10 GMT
+      connection: 
+      - keep-alive
+    body: 
+    http_version: "1.1"
