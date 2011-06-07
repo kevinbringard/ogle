@@ -45,7 +45,6 @@ module Ogle
       path = details ? "/v1/images/detail" : "/v1/images"
 
       response = @connection.get path
-
       response.body['images'].collect do |r|
         ImageData.new r
       end
@@ -105,7 +104,9 @@ module Ogle
     def create file, name, meta
       headers = { "x-image-meta-name" => name }.merge meta
       response = @connection.post "/v1/images", :upload => { :file => file, :headers => headers }
-      response.body['images'].collect do |r|
+      puts "Response body: #{response.body.inspect}"
+      response.body['image'].collect do |r|
+        puts "R: #{r.inspect}"
         ImageData.new r
       end
     end
