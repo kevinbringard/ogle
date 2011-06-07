@@ -105,6 +105,20 @@ module Ogle
     def create file, name, meta
       headers = { "x-image-meta-name" => name }.merge meta
       response = @connection.post "/v1/images", :upload => { :file => file, :headers => headers }
+      response.body['images'].collect do |r|
+        ImageData.new r
+      end
+    end
+
+    ##
+    # Update the metadata for an image
+    #
+    # +image_id+: A string representing an image_id
+    # +meta+: A hash of custom defined metadata to updated in the image
+    
+    def update image_id, meta
+      puts meta.inspect
+      response = @connection.put "/v1/images/#{image_id}", :headers => meta, :body => 'NULL'
     end
 
   private

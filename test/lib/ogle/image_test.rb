@@ -115,6 +115,22 @@ describe Ogle::Image do
     end
   end
 
+  describe "#update" do
+    VCR.use_cassette "image_update" do
+      metadata = {
+        "x-image-meta-is-public" => "true",
+        "x-image-met-property-test" => "yes-updated",
+        "x-image-meta-property-distro" => "test-distro-updated",
+        "x-image-meta-property-version" => "test-version-1.1"
+      }
+
+      response = CONNECTION.image.update "56", metadata
+
+      it "returns an HTTP/1.1 200 OK" do
+        reponse.code.must_equal "200"
+      end
+    end
+  end
 
   def must_have_valid_keys response, keys
     raise "The response passed in is empty." if response.keys.empty?
