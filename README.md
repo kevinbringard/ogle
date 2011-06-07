@@ -24,7 +24,7 @@ ruby 1.9.2
 
 ## Testing
 
-Add gluster.trunk to your hosts file.
+Add glance.trunk to your hosts file.
 
     $ bundle exec rake
 

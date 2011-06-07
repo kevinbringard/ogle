@@ -2,7 +2,7 @@
 - !ruby/struct:VCR::HTTPInteraction 
   request: !ruby/struct:VCR::Request 
     method: :head
-    uri: http://gluster.trunk:9292/v1/images/4
+    uri: http://glance.trunk:9292/v1/images/4
     body: 
     headers: 
       accept: 
