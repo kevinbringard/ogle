@@ -97,30 +97,27 @@ module Ogle
     ##
     # Upload (create) a new image.
     #
-    # +file+: The file to upload.
     # +name+: The name of the file in glance (x-image-meta-name).
-    # +meta+: A hash of custom defined metadata to be added to the image (x-image-meta-properties-*).
+    # +file+: The file to upload.
+    # +metadata+: A hash of custom defined metadata to be added to the image (x-image-meta-properties-*).
 
-    def create file, name, meta
-      headers = { "x-image-meta-name" => name }.merge meta
-      response = @connection.post "/v1/images", :upload => { :file => file, :headers => headers }
-      puts "Response body: #{response.body.inspect}"
-      response.body['image'].collect do |r|
-        puts "R: #{r.inspect}"
-        ImageData.new r
-      end
+    def create name, file, metadata
+      response = @connection.post "/v1/images", :upload => {
+        :file => file, :headers => { "x-image-meta-name" => name }.merge(metadata)
+      }
+
+      ImageData.new response.body['image']
     end
 
     ##
     # Update the metadata for an image
     #
     # +image_id+: A string representing an image_id
-    # +meta+: A hash of custom defined metadata to updated in the image
+    # +metadata+: A hash of custom defined metadata to updated in the image
     
-    def update image_id, meta
-      puts meta.inspect
-      response = @connection.put "/v1/images/#{image_id}", :headers => meta, :body => 'NULL'
-    end
+    #def update image_id, metadata
+    #  response = @connection.put "/v1/images/#{image_id}", :headers => metadata, :body => 'NULL'
+    #end
 
   private
     ##

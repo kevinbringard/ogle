@@ -98,29 +98,32 @@ describe Ogle::Image do
     VCR.use_cassette "image_destroy" do
       response = CONNECTION.image.destroy 56
 
-      it "returns an HTTP/1.1 200 OK" do
+      it "returns OK" do
         response.code.must_equal "200"
       end
     end
   end
 
-  #describe "#create" do
-  #  VCR.use_cassette "image_create" do
-  #    testfile = File.join TEST_ROOT, "support", "test-image"
-  #    metadata = {
-  #      "x-image-meta-is-public"        => "true",
-  #      "x-image-meta-property-test"    => "yes",
-  #      "x-image-meta-property-distro"  => "test-distro",
-  #      "x-image-meta-property-version" => "test-version-1"
-  #    }
+  describe "#create" do
+    before do
+      VCR.use_cassette "image_create" do
+        @response = upload "test_image"
+      end
+    end
 
-  #    response = CONNECTION.image.create "#{testfile}", "test-image", metadata
+    it "returns metadata" do
+      must_have_valid_methods @response, METADATA_KEYS
+    end
 
-  #    it "returns an HTTP/1.1 201 OK" do
-  #      response.code.must_equal "201"
-  #    end
-  #  end
-  #end
+    it "returns a nested properties hash" do
+      must_have_valid_keys @response.properties, %w(
+        public
+        test
+        distro
+        version
+      )
+    end
+  end
 
   ### TODO:
   # - Upload image to update in setup.
@@ -149,6 +152,18 @@ describe Ogle::Image do
 
   def must_have_valid_methods response, keys
     keys.each { |k| response.respond_to? k }
+  end
+
+  def upload name
+    image    = File.join TEST_ROOT, "support", "test-image"
+    metadata = {
+      "x-image-meta-is-public"        => "true",
+      "x-image-meta-property-test"    => "yes",
+      "x-image-meta-property-distro"  => "test-distro",
+      "x-image-meta-property-version" => "test-version-1"
+    }
+
+    CONNECTION.image.create name, image, metadata
   end
 end
 
