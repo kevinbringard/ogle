@@ -138,30 +138,58 @@ describe Ogle::Image do
   end
 
   ### TODO:
-  # - Upload image to update in setup.
+  # - Return an Object
 
-  #describe "#update" do
-  #  before do
-  #    VCR.use_cassette "image_update" do
-  #      @response = upload "image_update"
-  #    end
-  #  end
+  describe "#update" do
+    describe "metadata" do
+      before do
+        VCR.use_cassette "image_update_metadata" do
+          @image = upload "image_update_metadata"
+        end
+      end
 
-  #  VCR.use_cassette "image_update" do
-  #    metadata = {
-  #      "x-image-meta-is-public"        => "true",
-  #      "x-image-met-property-test"     => "yes-updated",
-  #      "x-image-meta-property-distro"  => "test-distro-updated",
-  #      "x-image-meta-property-version" => "test-version-1.1"
-  #    }
+      after do
+        VCR.use_cassette "image_update_metadata" do
+          CONNECTION.image.destroy @image.id
+        end
+      end
 
-  #    response = CONNECTION.image.update "56", metadata
+      it "updates metadata" do
+        VCR.use_cassette "image_update_metadata" do
+          @image.is_public.must_equal true
 
-  #    it "returns an HTTP/1.1 200 OK" do
-  #      reponse.code.must_equal "200"
-  #    end
-  #  end
-  #end
+          response = CONNECTION.image.update @image.id, { "x-image-meta-is-public" => "false" }
+
+          response['is_public'].must_equal false
+        end
+      end
+    end
+
+    describe "properties" do
+      before do
+        VCR.use_cassette "image_update_properties" do
+          @image = upload "image_update_properties"
+          @image.properties['kernel_id'].must_equal "test-kernel-id"
+
+          @response = CONNECTION.image.update @image.id, { "x-image-meta-property-kernel_id" => "updated-test-kernel-id" }
+        end
+      end
+
+      after do
+        VCR.use_cassette "image_update_properties" do
+          CONNECTION.image.destroy @image.id
+        end
+      end
+
+      it "updates property hash" do 
+        @response['properties']['kernel_id'].must_equal "updated-test-kernel-id"
+      end
+
+      it "doesn't have old properties" do
+        @response['properties'].size.must_equal 1
+      end
+    end
+  end
 
   def must_have_valid_keys response, keys
     raise "The response passed in is empty." if response.keys.empty?

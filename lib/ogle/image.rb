@@ -112,12 +112,14 @@ module Ogle
     ##
     # Update the metadata for an image
     #
-    # +image_id+: A string representing an image_id
-    # +metadata+: A hash of custom defined metadata to updated in the image
+    # +image_id+: A string representing an image_id.
+    # +metadata+: A hash of custom defined metadata to updated in the image.
     
-    #def update image_id, metadata
-    #  response = @connection.put "/v1/images/#{image_id}", :headers => metadata, :body => 'NULL'
-    #end
+    def update image_id, metadata
+      response = @connection.put "/v1/images/#{image_id}", :headers => metadata
+
+      response.body['image']
+    end
 
   private
     ##
