@@ -1,4 +1,6 @@
 module Ogle
+  Struct.new "ImageDestroy", :return
+
   class ImageData
     ##
     # Return a valid ami id from the given 'glance id'.
@@ -92,6 +94,8 @@ module Ogle
 
     def destroy image_id
       response = @connection.delete "/v1/images/#{image_id}"
+
+      Struct::ImageDestroy.new response.code == "200"
     end
 
     ##

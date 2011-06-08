@@ -108,7 +108,7 @@ describe Ogle::Image do
       VCR.use_cassette "image_destroy" do
         response = CONNECTION.image.destroy @image_id
 
-        response.code.must_equal "200"
+        response.return.must_equal true
       end
     end
   end
