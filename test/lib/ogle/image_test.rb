@@ -179,7 +179,7 @@ describe Ogle::Image do
         @response.properties['kernel_id'].must_equal "updated-test-kernel-id"
       end
 
-      it "doesn't have old properties" do
+      it "doesn't maintain old properties" do
         @response.properties.size.must_equal 1
       end
     end
