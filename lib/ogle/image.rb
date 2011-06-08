@@ -122,7 +122,7 @@ module Ogle
     def update image_id, metadata
       response = @connection.put "/v1/images/#{image_id}", :headers => metadata
 
-      response.body['image']
+      ImageData.new response.body['image']
     end
 
   private

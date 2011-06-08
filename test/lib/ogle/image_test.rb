@@ -94,9 +94,6 @@ describe Ogle::Image do
     end
   end
 
-  ### TODO:
-  # - Return an Object
-
   describe "#destroy" do
     before do
       VCR.use_cassette "image_destroy" do
@@ -137,9 +134,6 @@ describe Ogle::Image do
     end
   end
 
-  ### TODO:
-  # - Return an Object
-
   describe "#update" do
     describe "metadata" do
       before do
@@ -160,7 +154,7 @@ describe Ogle::Image do
 
           response = CONNECTION.image.update @image.id, { "x-image-meta-is-public" => "false" }
 
-          response['is_public'].must_equal false
+          response.is_public.must_equal false
         end
       end
     end
@@ -182,11 +176,11 @@ describe Ogle::Image do
       end
 
       it "updates property hash" do 
-        @response['properties']['kernel_id'].must_equal "updated-test-kernel-id"
+        @response.properties['kernel_id'].must_equal "updated-test-kernel-id"
       end
 
       it "doesn't have old properties" do
-        @response['properties'].size.must_equal 1
+        @response.properties.size.must_equal 1
       end
     end
   end
