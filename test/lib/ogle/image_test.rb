@@ -28,11 +28,11 @@ describe Ogle::Image do
       end
     end
 
-    it "returns all images with details" do
+    it "returns all images" do
       @response.size.must_be :>=, 1
     end
 
-    it "returns metadata with details" do
+    it "returns metadata" do
       must_have_valid_methods @response.first, DETAILED_METADATA_KEYS
     end
   end
@@ -57,7 +57,7 @@ describe Ogle::Image do
     VCR.use_cassette "image_runable_with_details" do
       response = CONNECTION.image.runable true
 
-      it "returns metadata with details" do
+      it "returns metadata" do
         must_have_valid_methods response.first, DETAILED_METADATA_KEYS
       end
     end
