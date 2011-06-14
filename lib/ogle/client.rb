@@ -11,8 +11,8 @@ module Ogle
         :host         => options[:host],
         :scheme       => options[:scheme] || "http",
         :port         => options[:port] || 9292,
-        :user         => options[:user] || 'nil',
-        :password     => options[:pass] || 'nil',
+        :user         => options[:user],
+        :password     => options[:pass],
         :raise_errors => true
       )
     end
